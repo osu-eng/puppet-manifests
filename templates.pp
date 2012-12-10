@@ -1,5 +1,6 @@
 # Defines the classes that should included in various roles.
 
+# Base class used by all nodes
 class base {
   include general
   class { 'ntp':
@@ -13,8 +14,13 @@ class base {
   class { 'puppet': 
     puppetserver => 'control.eng-web.local',
   }
+  class { 'motd': 
+    message => 'Welcome to the College of Engineering web infrastructure!',
+  }
 }
 
+# Node role definitions
 class puppetmaster {
   include puppet::master
 }
+

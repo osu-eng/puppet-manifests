@@ -3,6 +3,7 @@
 # Base class used by all nodes
 class base {
   include general
+  include mail
   class { 'ntp':
     servers => [
       'ntp1.service.ohio-state.edu',
@@ -17,6 +18,7 @@ class base {
   class { 'motd': 
     message => 'Welcome to the College of Engineering web infrastructure!',
   }
+  class { 'ssh': }
 }
 
 # Node role definitions

@@ -1,8 +1,7 @@
 # Defines the classes that should included in various roles.
 
-# The basic set of classes that will apply to most nodes
-node basenode {
-  include base
+class base {
+  include general
   class { 'ntp':
     servers => [
       'ntp1.service.ohio-state.edu',
@@ -16,5 +15,6 @@ node basenode {
   }
 }
 
-# The configuration applied by default
-node default inherits basenode {}
+class puppetmaster {
+  include puppet::master
+}

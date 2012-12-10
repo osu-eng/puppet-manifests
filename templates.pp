@@ -4,6 +4,7 @@
 class base {
   include general
   include mail
+  include firewall_rules
   class { 'ntp':
     servers => [
       'ntp1.service.ohio-state.edu',

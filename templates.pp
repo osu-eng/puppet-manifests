@@ -10,6 +10,7 @@ class base {
   include motd
   include network_settings
   include ssh
+  include services
 }
 
 # Node role definitions

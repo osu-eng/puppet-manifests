@@ -1,5 +1,5 @@
 import 'templates'
-import 'nodes'
+hiera_include(roles)
 
 # Firewall configuration
 exec { 'persist-firewall':

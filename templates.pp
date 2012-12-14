@@ -9,6 +9,7 @@ class base {
   include ntp
   include motd
   include network_settings
+  include network_settings::hosts
   include ssh
   include services
 }

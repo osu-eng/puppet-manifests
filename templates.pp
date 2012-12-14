@@ -14,6 +14,8 @@ class base {
   include services
   include cron
   include selinux
+  include logrotate::base
+  include sudo
 }
 
 # Node role definitions

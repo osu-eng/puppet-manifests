@@ -12,6 +12,8 @@ class base {
   include network_settings::hosts
   include ssh
   include services
+  include cron
+  include selinux
 }
 
 # Node role definitions

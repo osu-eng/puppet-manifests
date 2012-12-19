@@ -21,6 +21,7 @@ class base {
   include selinux
   include logrotate::base
   include sudo
+  include vmwaretools
 
   # Red Hat Enterprise Linux activation
   if $::operatingsystem == 'RedHat' {

@@ -16,6 +16,7 @@ class base {
   include network_settings
   include network_settings::hosts
   include ssh
+  include ssh::known_hosts
   include services
   include cron
   include selinux

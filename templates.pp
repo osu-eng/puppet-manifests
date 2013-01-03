@@ -40,3 +40,11 @@ class puppetmaster {
 class ldap {
   include auth::ldap_server
 }
+
+class shibboleth {
+  include shibboleth_server
+}
+
+class aegirmaster {
+  include aegir::master
+}

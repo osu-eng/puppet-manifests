@@ -48,3 +48,7 @@ class shibboleth {
 class aegirmaster {
   include aegir::master
 }
+
+class mysqlserver {
+  include mysql::server
+}

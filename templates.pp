@@ -47,11 +47,17 @@ class shibboleth {
 
 class aegirmaster {
   include aegir::master
-  include mysql
 }
 
-class mysqlserver {
+class database {
   include mysql::server
+}
+
+class webserver {
+  include apache
+  include php::apache
+  include php::apc
+  include mysql
 }
 
 class newrelicclient {

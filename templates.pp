@@ -47,8 +47,22 @@ class shibboleth {
 
 class aegirmaster {
   include aegir::master
+  include mysql
 }
 
 class mysqlserver {
   include mysql::server
+}
+
+class newrelicclient {
+  newrelic::server {
+    'srvXYZ':
+      newrelic_license_key => '4fa2ff73cf5d743ff2a2eb34aa9e0f34fd80f1d9',
+  }
+  /*
+  newrelic::php {
+    'appXYZ':
+      newrelic_license_key      => '4fa2ff73cf5d743ff2a2eb34aa9e0f34fd80f1d9',
+      newrelic_php_conf_appname => 'Your PHP Application',
+  }*/
 }

@@ -49,6 +49,12 @@ class aegirmaster {
   include aegir::master
 }
 
-class mysqlserver {
+class database {
   include mysql::server
+}
+
+class webserver {
+  include apache
+  include php::apache
+  include php::apc
 }

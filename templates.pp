@@ -10,7 +10,7 @@ class base {
   include general
   include auth
   include mail
-  include firewall_rules
+  include firewall::base
   include ntp
   include motd
   include network_settings

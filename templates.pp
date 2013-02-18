@@ -56,8 +56,11 @@ class database {
 class webserver {
   include apache
   include php::apache
-  include php::apc
   include mysql
+}
+class webserver_cache {
+  include webserver
+  include php::apc
 }
 
 class newrelicclient {

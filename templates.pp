@@ -75,3 +75,12 @@ class newrelicclient {
       newrelic_php_conf_appname => 'Your PHP Application',
   }*/
 }
+
+class cluster_node {
+  include cluster::node
+  include cluster::file_system
+}
+
+class cluster_manager {
+  include cluster::manager
+}

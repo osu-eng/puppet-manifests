@@ -12,5 +12,9 @@ filebucket { 'main':
 File { backup => main }
 
 # Add node template classes and node definitions from Hiera
-import 'templates'
-hiera_include(roles)
+import 'roles'
+import 'profiles'
+
+# Store node role in a global variable
+$role = hiera('role')
+include $role

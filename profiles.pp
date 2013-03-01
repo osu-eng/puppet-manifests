@@ -1,6 +1,6 @@
-# Defines the classes that should included in various roles.
+# Defines profiles that can add functionality to roles.
 
-# Base class used by all nodes
+# Base class used by many nodes
 class base {
   # Make sure puppet configuration is pushed out first
   class { 'puppet':
@@ -58,8 +58,8 @@ class webserver {
   include php::apache
   include mysql
 }
-class webserver_cache {
-  include webserver
+
+class opcode_cache {
   include php::apc
 }
 

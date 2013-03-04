@@ -49,6 +49,10 @@ class aegirmaster {
   include aegir::master
 }
 
+class aegirslave {
+  include aegir
+}
+
 class database {
   include mysql::server
 }
@@ -83,4 +87,8 @@ class cluster_node {
 
 class cluster_manager {
   include cluster::manager
+}
+
+class virtual_server {
+  include piranha
 }

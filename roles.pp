@@ -20,6 +20,7 @@ class web_cluster_node {
   include opcode_cache
   include shibboleth
   include cluster_node
+  include aegirslave
 }
 
 class web_cluster_platform_manager {
@@ -32,7 +33,7 @@ class web_cluster_platform_manager {
 
 class load_balancer {
   include base
-  include webserver
+  include virtual_server
 }
 
 class web_platform_manager {

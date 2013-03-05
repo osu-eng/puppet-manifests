@@ -21,6 +21,7 @@ class web_cluster_node {
   include shibboleth
   include cluster_node
   include aegirslave
+  include real_server
 }
 
 class web_cluster_platform_manager {

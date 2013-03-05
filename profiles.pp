@@ -92,3 +92,7 @@ class cluster_manager {
 class virtual_server {
   include piranha
 }
+
+class real_server {
+  include piranha::real_server
+}

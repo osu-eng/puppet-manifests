@@ -96,3 +96,8 @@ class virtual_server {
 class real_server {
   include piranha::real_server
 }
+
+class unitrends_client {
+  include unitrends
+  include inetd
+}

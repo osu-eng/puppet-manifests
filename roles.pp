@@ -12,6 +12,7 @@ class database_cluster_node {
   include base
   include database
   include cluster_node
+  include unitrends_client
 }
 
 class web_cluster_node {
@@ -22,6 +23,7 @@ class web_cluster_node {
   include cluster_node
   include aegirslave
   include real_server
+  include unitrends_client
 }
 
 class web_cluster_platform_manager {
@@ -30,6 +32,7 @@ class web_cluster_platform_manager {
   include cluster_node
   include aegirmaster
   include shibboleth
+  include unitrends_client
 }
 
 class load_balancer {

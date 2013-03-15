@@ -13,6 +13,7 @@ class database_cluster_node {
   include database
   include cluster_node
   include unitrends_client
+  include unitrends_database
 }
 
 class web_cluster_node {

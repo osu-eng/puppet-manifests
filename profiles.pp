@@ -102,3 +102,7 @@ class unitrends_client {
   include unitrends
   include inetd
 }
+
+class unitrends_database {
+  include unitrends::mysql
+}

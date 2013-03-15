@@ -55,6 +55,7 @@ class aegirslave {
 
 class database {
   include mysql::server
+  include mysql::backup
 }
 
 class webserver {

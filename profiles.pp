@@ -108,7 +108,6 @@ class unitrends_database {
 }
 
 class rails_app {
-  include ruby
   include capistrano
   include passenger
 }

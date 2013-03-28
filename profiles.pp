@@ -106,3 +106,9 @@ class unitrends_client {
 class unitrends_database {
   include unitrends::mysql
 }
+
+class rails_app {
+  include ruby
+  include capistrano
+  include passenger
+}

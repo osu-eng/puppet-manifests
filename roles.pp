@@ -56,6 +56,7 @@ class database_server {
 
 class application_server {
   include base
+  include ruby::dev
   include webserver
   include rails_app
 }

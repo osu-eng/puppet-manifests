@@ -108,6 +108,9 @@ class unitrends_database {
 }
 
 class rails_app {
+  class { 'ruby::dev':
+    before => Class['passenger'],
+  }
   include capistrano
   include passenger
 }

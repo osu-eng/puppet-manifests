@@ -109,9 +109,9 @@ class unitrends_database {
 
 class rails_app {
   include rvm
-  class { 'rubies':
-    before => Class['rvm::passenger::apache'],
-  }
+  include rubies
   include capistrano
-  include rvm::passenger::apache
+  class { 'rvm::passenger::apache';
+    require => [ Class['rubies'], Class['apache'] ]
+  }
 }

@@ -111,6 +111,7 @@ class rails_app {
   include rvm
   include rubies
   include capistrano
+  include mysql::devel
   class { 'rvm::passenger::apache':
     require => [ Class['rubies'], Class['apache'] ]
   }

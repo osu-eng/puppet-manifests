@@ -59,3 +59,8 @@ class application_server {
   include webserver
   include rails_app
 }
+
+class security_scanner {
+  include base
+  include unitrends_client
+}

@@ -69,16 +69,7 @@ class opcode_cache {
 }
 
 class newrelicclient {
-  newrelic::server {
-    'srvXYZ':
-      newrelic_license_key => '4fa2ff73cf5d743ff2a2eb34aa9e0f34fd80f1d9',
-  }
-  /*
-  newrelic::php {
-    'appXYZ':
-      newrelic_license_key      => '4fa2ff73cf5d743ff2a2eb34aa9e0f34fd80f1d9',
-      newrelic_php_conf_appname => 'Your PHP Application',
-  }*/
+
 }
 
 class cluster_node {

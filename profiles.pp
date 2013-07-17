@@ -64,6 +64,14 @@ class webserver {
   include mysql
 }
 
+class logserver {
+
+}
+
+class analyticsserver {
+
+}
+
 class opcode_cache {
   include php::apc
 }

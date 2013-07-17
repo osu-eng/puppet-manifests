@@ -41,6 +41,16 @@ class load_balancer {
   include virtual_server
 }
 
+class log_server {
+  include base
+  include logserver
+}
+
+class analytics_server {
+  include base
+  include analyticsserver
+}
+
 class web_platform_manager {
   include base
   include shibboleth

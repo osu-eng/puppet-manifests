@@ -65,7 +65,7 @@ class webserver {
 }
 
 class logserver {
-
+  class { 'logstash': }
 }
 
 class analyticsserver {

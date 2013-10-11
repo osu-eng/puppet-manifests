@@ -65,6 +65,8 @@ class webserver {
 }
 
 class logserver {
+
+  class { 'logstash::java': }
   class { 'logstash':    
     provider => 'custom',
     jarfile  => 'puppet:///modules/logstash/bin/logstash-current.jar',

@@ -47,6 +47,17 @@ class shibboleth {
 
 class aegirmaster {
   include aegir::master
+ 
+  class { 'rsyslog::client':
+    log_remote     => true,
+    remote_type    => 'tcp',
+    log_local      => false,
+    log_auth_local => false,
+    custom_config  => undef,
+    server         => 'log',
+    port           => '514',
+    server         => 'logs.web.engineering.osu.edu',
+  }  
 }
 
 class aegirslave {
@@ -71,6 +82,28 @@ class logserver {
     provider => 'custom',
     jarfile  => 'puppet:///modules/logstash/bin/logstash-current.jar',
     installpath => '/var/logstash'}
+
+  class { 'rsyslog::server':
+    enable_tcp                => true,
+    enable_udp                => true,
+    enable_onefile            => false,
+    server_dir                => '/var/log/aggregated',
+    custom_config             => undef,
+    high_precision_timestamps => false,
+  }    
+}
+
+class loggedserver {
+  class { 'rsyslog::client':
+    log_remote     => true,
+    remote_type    => 'tcp',
+    log_local      => false,
+    log_auth_local => false,
+    custom_config  => undef,
+    server         => 'log',
+    port           => '514',
+    server         => 'logs.web.engineering.osu.edu',
+  }
 }
 
 class analyticsserver {

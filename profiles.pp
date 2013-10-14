@@ -87,8 +87,7 @@ class webserver {
 
 class logserver {
 
-  include rvm
-  include rubies
+  include apache
   class { 'logstash::java': }
   class { 'logstash':    
     provider => 'custom',

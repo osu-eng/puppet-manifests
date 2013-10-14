@@ -91,11 +91,9 @@ class logserver {
     high_precision_timestamps => false,
   }  
 
-  if defined('firewall::rule') and $start_service {
-    firewall::rule { 'allow-rsyslog-server':
-      weight => '375',
-      rule   => '-A INPUT -p tcp -m state --state NEW,ESTABLISHED -m tcp --dport 514 -j ACCEPT',
-    }
+  firewall::rule { 'allow-rsyslog-server':
+    weight => '375',
+    rule   => '-A INPUT -p tcp -m state --state NEW,ESTABLISHED -m tcp --dport 514 -j ACCEPT',
   }    
 }
 

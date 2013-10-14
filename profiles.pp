@@ -47,14 +47,13 @@ class shibboleth {
 
 class aegirmaster {
   include aegir::master
- 
+
   class { 'rsyslog::client':
     log_remote     => true,
     remote_type    => 'tcp',
     log_local      => false,
     log_auth_local => false,
     custom_config  => undef,
-    server         => 'log',
     port           => '514',
     server         => 'logs.web.engineering.osu.edu',
   }  
@@ -100,7 +99,6 @@ class loggedserver {
     log_local      => false,
     log_auth_local => false,
     custom_config  => undef,
-    server         => 'log',
     port           => '514',
     server         => 'logs.web.engineering.osu.edu',
   }

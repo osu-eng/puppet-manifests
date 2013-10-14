@@ -86,7 +86,7 @@ class logserver {
     enable_tcp                => true,
     enable_udp                => true,
     enable_onefile            => false,
-    server_dir                => '/var/log/aggregated',
+    server_dir                => '/var/log/aggregated/',
     custom_config             => undef,
     high_precision_timestamps => false,
   }  

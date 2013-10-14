@@ -87,6 +87,8 @@ class webserver {
 
 class logserver {
 
+  include rvm
+  include rubies
   class { 'logstash::java': }
   class { 'logstash':    
     provider => 'custom',
@@ -106,7 +108,7 @@ class logserver {
   firewall::rule { 'allow-rsyslog-server':
     weight => '375',
     rule   => '-A INPUT -p tcp -m state --state NEW,ESTABLISHED -m tcp --dport 514 -j ACCEPT',
-  }    
+  }     
 }
 
 

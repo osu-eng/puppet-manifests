@@ -93,14 +93,15 @@ class logserver {
     jarfile  => 'puppet:///modules/logstash/bin/logstash-current.jar',
     installpath => '/var/logstash'}
 
-  class { 'rsyslog::server':
-    enable_tcp                => true,
-    enable_udp                => true,
-    enable_onefile            => false,
-    server_dir                => '/var/log/aggregated/',
-    custom_config             => undef,
-    high_precision_timestamps => false,
-  }  
+  # Use logstash as rsyslog server
+  # class { 'rsyslog::server':
+  #  enable_tcp                => true,
+  #  enable_udp                => true,
+  #  enable_onefile            => false,
+  #  server_dir                => '/var/log/aggregated/',
+  #  custom_config             => undef,
+  #  high_precision_timestamps => false,
+  # }  
 
   firewall::rule { 'allow-rsyslog-server':
     weight => '375',

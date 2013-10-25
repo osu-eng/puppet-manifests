@@ -104,10 +104,16 @@ class logserver {
     high_precision_timestamps => false,
   }  
 
+  # Allow our rsyslog clients to talk to our rsyslog server
   firewall::rule { 'allow-rsyslog-server':
     weight => '375',
     rule   => '-A INPUT -p tcp -m state --state NEW,ESTABLISHED -m tcp --dport 514 -j ACCEPT',
-  }     
+  }    
+
+  # Install elastic search, docs say version must match logstash
+  class { 'elasticsearch':
+    version => '0.90.3'
+  } 
 }
 
 

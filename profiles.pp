@@ -110,6 +110,11 @@ class logserver {
     rule   => '-A INPUT -p tcp -m state --state NEW,ESTABLISHED -m tcp --dport 514 -j ACCEPT',
   }    
 
+  # elastic search seems to require log4j
+  package { 'log4j':
+    ensure: present,
+  }
+
   # Install elastic search, docs say version must match logstash
   class { 'elasticsearch':
     version => '0.90.3',

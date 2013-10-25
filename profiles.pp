@@ -112,7 +112,7 @@ class logserver {
 
   # elastic search seems to require log4j
   package { 'log4j':
-    ensure: present,
+    ensure => present,
   }
 
   # Install elastic search, docs say version must match logstash

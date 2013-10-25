@@ -112,7 +112,8 @@ class logserver {
 
   # Install elastic search, docs say version must match logstash
   class { 'elasticsearch':
-    version => '0.90.3'
+    version => '0.90.3',
+    pkg_source => 'puppet:///modules/elasticsearch/elasticsearch-0.90.3.noarch.rpm'
   } 
 }
 

@@ -118,6 +118,11 @@ class logserver {
   # Install elastic search, docs say version must match logstash
   class { 'elasticsearch':
     pkg_source => 'puppet:///modules/elasticsearch/elasticsearch-0.90.3.noarch.rpm'
+    config      => {
+      'network' => {
+        'host'  => '127.0.0.1',
+      }
+    }
   } 
 }
 

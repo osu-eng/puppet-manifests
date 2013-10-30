@@ -95,7 +95,7 @@ class logserver {
     gid      => 'logstash',
     shell    => '/sbin/nologin',
     home     => '/var/logstash',
-    require  => [ 'logstash-group' ],
+    require  => [ Group['logstash-group'] ],
   }
 
   group { 'logstash-group':

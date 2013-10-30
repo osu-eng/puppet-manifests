@@ -115,7 +115,7 @@ class logserver {
   logstash::input::file { 'logstash-syslog':
     path    => [ '/var/log/aggregated/*/auth', '/var/log/aggregated/*/syslog' ],
     type    => 'syslog',
-    sincedb => '/var/logstash/sincedb.syslog',
+    sincedb_path => '/var/logstash/sincedb.syslog',
   }
 
   logstash::output::elasticsearch { 'logstash-elasticsearch':

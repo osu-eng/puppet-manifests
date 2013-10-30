@@ -91,7 +91,7 @@ class logserver {
 
   user { 'logstash-user':
     ensure   => present,
-    name     => 'logstash'
+    name     => 'logstash',
     gid      => 'logstash',
     shell    => '/sbin/nologin',
     home     => '/var/logstash',

@@ -89,26 +89,26 @@ class logserver {
 
   include apache
 
-  user { 'logstash-user':
-    ensure   => present,
-    name     => 'logstash',
-    gid      => 'logstash',
-    shell    => '/sbin/nologin',
-    home     => '/var/logstash',
-    require  => [ Group['logstash-group'] ],
-  }
+  #user { 'logstash-user':
+  #  ensure   => present,
+  #  name     => 'logstash',
+  #  gid      => 'logstash',
+  #  shell    => '/sbin/nologin',
+  #  home     => '/var/logstash',
+  #  require  => [ Group['logstash-group'] ],
+  #}
 
-  group { 'logstash-group':
-    name  => 'logstash',
-  }
+  #group { 'logstash-group':
+  #  name  => 'logstash',
+  #}
 
   class { 'logstash::java': }
   class { 'logstash':    
     provider => 'custom',
     jarfile  => 'puppet:///modules/logstash/bin/logstash-current.jar',
     installpath => '/var/logstash',
-    logstash_user  => 'logstash',
-    logstash_group => 'logstash'
+    logstash_user  => 'root',
+    logstash_group => 'root'
   }
   
 

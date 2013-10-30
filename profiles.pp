@@ -88,12 +88,24 @@ class webserver {
 class logserver {
 
   include apache
+
+  user { 'logstash-user':
+    ensure   => present,
+    name     => 'logstash'
+    gid      => 'logstash',
+    shell    => '/sbin/nologin',
+    home     => '/var/logstash',
+  }
+
   class { 'logstash::java': }
   class { 'logstash':    
     provider => 'custom',
     jarfile  => 'puppet:///modules/logstash/bin/logstash-current.jar',
-    installpath => '/var/logstash'}
-
+    installpath => '/var/logstash',
+    logstash_user  => 'logstash',
+    logstash_group => 'logstash'
+  }
+  
 
   logstash::input::file { 'logstash-syslog':
     path    => [ '/var/log/aggregated/*/auth', '/var/log/aggregated/*/syslog' ],

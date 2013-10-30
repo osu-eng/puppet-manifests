@@ -94,6 +94,16 @@ class logserver {
     jarfile  => 'puppet:///modules/logstash/bin/logstash-current.jar',
     installpath => '/var/logstash'}
 
+
+  logstash::input::file { 'logstash-syslog':
+    path    => [ '/var/log/aggregated/*/auth', '/var/log/aggregated/*/syslog' ],
+    type    => 'syslog',
+  }
+
+  logstash::output::elasticsearch { 'logstash-elasticsearch':
+    embedded                  => true,
+  }    
+  
   # Use rsyslog server
   class { 'rsyslog::server':
     enable_tcp                => true,

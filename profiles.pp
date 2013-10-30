@@ -88,6 +88,7 @@ class webserver {
 class logserver {
 
   include apache
+  include kibana
 
   #user { 'logstash-user':
   #  ensure   => present,

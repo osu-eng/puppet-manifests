@@ -95,6 +95,11 @@ class logserver {
     gid      => 'logstash',
     shell    => '/sbin/nologin',
     home     => '/var/logstash',
+    require  => [ 'logstash-group' ],
+  }
+
+  group { 'logstash-group'
+    name  => 'logstash'
   }
 
   class { 'logstash::java': }

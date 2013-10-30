@@ -98,8 +98,8 @@ class logserver {
     require  => [ 'logstash-group' ],
   }
 
-  group { 'logstash-group'
-    name  => 'logstash'
+  group { 'logstash-group':
+    name  => 'logstash',
   }
 
   class { 'logstash::java': }

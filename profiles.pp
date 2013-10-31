@@ -7,6 +7,7 @@ class base {
     stage => first
   }
 
+  include epel
   include general
   include auth
   include mail
@@ -58,16 +59,6 @@ class shibboleth {
 
 class aegirmaster {
   include aegir::master
-
-  class { 'rsyslog::client':
-    log_remote     => true,
-    remote_type    => 'tcp',
-    log_local      => false,
-    log_auth_local => false,
-    custom_config  => undef,
-    port           => '514',
-    server         => 'logs.web.engineering.osu.edu',
-  }  
 }
 
 class aegirslave {

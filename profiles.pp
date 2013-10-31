@@ -114,7 +114,7 @@ class logserver {
   
 
   logstash::input::file { 'logstash-syslog':
-    path    => [ '/var/log/aggregated/*/auth', '/var/log/aggregated/*/syslog' ],
+    path    => [ '/var/log/aggregated/*/syslog' ],
     type    => 'syslog',
     sincedb_path => '/var/logstash/sincedb.syslog',
   }

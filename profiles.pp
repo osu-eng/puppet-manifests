@@ -67,7 +67,9 @@ class aegirslave {
 
 class database {
   include mysql::server
-  include mysql::backup
+  include mysql::server::account_security
+  include mysql::server::mysqltuner
+  include mysql::server::backup
 }
 
 class webserver {
@@ -187,14 +189,18 @@ class unitrends_client {
 }
 
 class unitrends_database {
-  include unitrends::mysql
+  # include unitrends::mysql
 }
 
 class rails_app {
   include rvm
   include rubies
   include capistrano
-  include mysql::devel
+
+  package { 'mysql-devel':
+    ensure => present,
+  }
+
   class { 'rvm::passenger::apache':
     require => [ Class['rubies'], Class['apache'] ]
   }

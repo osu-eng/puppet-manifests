@@ -66,6 +66,7 @@ class aegirslave {
 }
 
 class database {
+  include mysql::repos
   include mysql::server
   include mysql::server::account_security
   include mysql::server::mysqltuner
@@ -75,6 +76,7 @@ class database {
 class webserver {
   include apache
   include php::apache
+  include mysql::repos
   include mysql::client
 }
 

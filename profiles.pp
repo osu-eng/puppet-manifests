@@ -199,7 +199,7 @@ class rails_app {
   include rubies
   include capistrano
 
-  package { 'MariaDB-devel':
+  package { 'mysql-devel':
     ensure => present,
   }
 

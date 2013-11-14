@@ -71,6 +71,12 @@ class database {
   include mysql::server::account_security
   include mysql::server::mysqltuner
   include mysql::server::backup
+
+  # Allow our mysql clients to talk to our  server
+  firewall::rule { 'allow-rsyslog-server':
+    weight => '375',
+    rule   => '-A INPUT -p tcp -m state --state NEW,ESTABLISHED -m tcp --dport 3306 -j ACCEPT',
+  }  
 }
 
 class webserver {

@@ -75,7 +75,7 @@ class database {
 class webserver {
   include apache
   include php::apache
-  include mysql
+  include mysql::client
 }
 
 class logserver {

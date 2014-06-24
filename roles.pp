@@ -43,7 +43,6 @@ class load_balancer {
 
 class log_server {
   include base
-  include logserver
 }
 
 class analytics_server {

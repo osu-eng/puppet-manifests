@@ -99,16 +99,17 @@ class logserver {
 
   elasticsearch::instance { 'es-01': }
 
-  $config_hash = {
-    'ADDRESS' => '127.0.0.1',
-    'PORT' => '9292'
-  }
+  # $config_hash = {
+  #   'ADDRESS' => '127.0.0.1',
+  #   'PORT' => '9292'
+  # }
 
   class { 'logstash':
     manage_repo  => true,
     repo_version => '1.4',
     version => '1.4.2-1_2c0f5a1',
-    init_defaults => $config_hash
+    install_contrib => true
+    # init_defaults => $config_hash
   }
 
   #user { 'logstash-user':

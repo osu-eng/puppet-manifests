@@ -107,7 +107,7 @@ class logserver {
   class { 'logstash':
     package_url => 'https://download.elasticsearch.org/logstash/logstash/packages/centos/logstash-1.4.2-1_2c0f5a1.noarch.rpm',
     install_contrib => true,
-    contrib_package_url => 'https://download.elasticsearch.org/logstash/logstash/packages/centos/logstash-contrib-1.4.2-1_efd53ef.noarch.rpm'
+    contrib_package_url => 'https://download.elasticsearch.org/logstash/logstash/packages/centos/logstash-contrib-1.4.2-1_efd53ef.noarch.rpm',
     init_defaults => $config_hash
   }
 

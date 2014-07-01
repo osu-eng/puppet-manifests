@@ -111,6 +111,24 @@ class logserver {
     # init_defaults => $config_hash
   }
 
+  $logstash_config = '
+    input {
+      file {
+        path => "/var/log/messages-20140629"
+        type => "syslog"
+      }
+    }
+
+    output {
+      elasticsearch { protocol => "http" }
+      stdout { codec => rubydebug }
+    }
+  '
+
+  logstash::configfile { 'configname':
+    content => "$logstash_config"
+  }
+
   #user { 'logstash-user':
   #  ensure   => present,
   #  name     => 'logstash',

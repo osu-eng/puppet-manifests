@@ -93,7 +93,7 @@ class logserver {
   class { 'elasticsearch':
     manage_repo  => true,
     repo_version => '1.2',
-    version => '1.2.1',
+    version => '1.2.1-1',
     java_install => true
   }
 

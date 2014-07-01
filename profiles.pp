@@ -107,7 +107,7 @@ class logserver {
   class { 'logstash':
     manage_repo  => true,
     repo_version => '1.4',
-    version => '1.4.2-1',
+    version => '1.4.2-1_2c0f5a1',
     init_defaults => $config_hash
   }
 

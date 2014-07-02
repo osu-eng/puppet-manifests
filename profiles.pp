@@ -90,6 +90,12 @@ class logserver {
 
   include apache
 
+  vcsrepo { "/etc/logstash/conf.d":
+    ensure => present,
+    provider => git,
+    source => "git@github.com:osu-eng/logstash-config.git"
+  }
+
   class { 'elasticsearch':
     manage_repo  => true,
     repo_version => '1.2',
@@ -105,23 +111,6 @@ class logserver {
     contrib_package_url => 'https://download.elasticsearch.org/logstash/logstash/packages/centos/logstash-contrib-1.4.2-1_efd53ef.noarch.rpm'
   }
 
-  $logstash_config = '
-    input {
-      file {
-        path => "/var/log/messages-20140629"
-        type => "syslog"
-      }
-    }
-
-    output {
-      elasticsearch { protocol => "http" }
-      stdout { codec => rubydebug }
-    }
-  '
-
-  logstash::configfile { 'configname':
-    content => "$logstash_config"
-  }
 
   #user { 'logstash-user':
   #  ensure   => present,

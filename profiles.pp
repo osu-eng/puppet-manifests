@@ -93,7 +93,7 @@ class logserver {
   vcsrepo { "/etc/logstash/conf.d":
     ensure => latest,
     provider => git,
-    source => "git@github.com:osu-eng/logstash-config.git",
+    source => "https://github.com/osu-eng/logstash-config.git",
     revision => 'master'
   }
 

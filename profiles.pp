@@ -89,7 +89,6 @@ class webserver {
 class logserver {
 
   include apache
-  include vcsrepo
 
   vcsrepo { "/etc/logstash/conf.d":
     ensure => present,

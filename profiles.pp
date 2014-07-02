@@ -91,9 +91,10 @@ class logserver {
   include apache
 
   vcsrepo { "/etc/logstash/conf.d":
-    ensure => present,
+    ensure => latest,
     provider => git,
-    source => "git@github.com:osu-eng/logstash-config.git"
+    source => "git@github.com:osu-eng/logstash-config.git",
+    revision => 'master'
   }
 
   class { 'elasticsearch':

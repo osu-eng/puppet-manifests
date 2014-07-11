@@ -87,77 +87,7 @@ class webserver {
 }
 
 class logserver {
-
   include elk
-
-  #user { 'logstash-user':
-  #  ensure   => present,
-  #  name     => 'logstash',
-  #  gid      => 'logstash',
-  #  shell    => '/sbin/nologin',
-  #  home     => '/var/logstash',
-  #  require  => [ Group['logstash-group'] ],
-  #}
-
-  #group { 'logstash-group':
-  #  name  => 'logstash',
-  #}
-
-  # class { 'logstash::java': }
-  # class { 'logstash':    
-  #   provider => 'custom',
-  #   jarfile  => 'puppet:///modules/logstash/bin/logstash-current.jar',
-  #   installpath => '/var/logstash',
-  #   logstash_user  => 'root',
-  #   logstash_group => 'root'
-  # }
-  
-
-  # logstash::input::file { 'logstash-syslog':
-  #   path    => [ '/var/log/aggregated/*/syslog' ],
-  #   type    => 'syslog',
-  #   sincedb_path => '/var/logstash/sincedb.syslog',
-  # }
-  # logstash::input::file { 'logstash-auth':
-  #   path    => [ '/var/log/aggregated/*/auth.log' ],
-  #   type    => 'syslog',
-  #   sincedb_path => '/var/logstash/sincedb.auth',
-  # }
-
-  # logstash::output::elasticsearch { 'logstash-elasticsearch':
-  #   embedded                  => true,
-  # }    
-  
-  # # Use rsyslog server
-  # class { 'rsyslog::server':
-  #   enable_tcp                => true,
-  #   enable_udp                => true,
-  #   enable_onefile            => false,
-  #   server_dir                => '/var/log/aggregated/',
-  #   custom_config             => undef,
-  #   high_precision_timestamps => false,
-  # }  
-
-  # # Allow our rsyslog clients to talk to our rsyslog server
-  # firewall::rule { 'allow-rsyslog-server':
-  #   weight => '375',
-  #   rule   => '-A INPUT -p tcp -m state --state NEW,ESTABLISHED -m tcp --dport 514 -j ACCEPT',
-  # }    
-
-  # elastic search seems to require log4j
-  # package { 'log4j':
-  #  ensure => present,
-  # }
-
-  # Install elastic search, docs say version must match logstash
-  # class { 'elasticsearch':
-  #  pkg_source => 'puppet:///modules/elasticsearch/elasticsearch-0.90.3.noarch.rpm'
-  #  config      => {
-  #    'network' => {
-  #      'host'  => '127.0.0.1',
-  #    }
-  #  }
-  #} 
 }
 
 
@@ -211,4 +141,18 @@ class rails_app {
   class { 'rvm::passenger::apache':
     require => [ Class['rubies'], Class['apache'] ]
   }
+
+  class { 'logstashforwarder':
+    manage_repo  => true,
+    servers  => [ 'logstash.web.engineering.osu.edu:4545' ],
+    ssl_key  => '/etc/httpd/conf/private.key',
+    ssl_ca   => '/etc/httpd/conf/ca-chain.cert',
+    ssl_cert => '/etc/httpd/conf/public.cert'
+  }
+
+  logstashforwarder::file { 'apache':
+    paths  => [ '/var/log/httpd/access.log' ],
+    fields => { 'type' => 'apache' },
+  }
+
 }

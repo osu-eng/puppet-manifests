@@ -151,7 +151,7 @@ class rails_app {
   }
 
   logstashforwarder::file { 'apache':
-    paths  => [ '/var/log/httpd/access.log' ],
+    paths  => [ '/var/log/httpd/access_log' ],
     fields => { 'type' => 'apache' },
   }
 

@@ -34,13 +34,8 @@ class base {
 
   # Enable rsyslog
   class { 'rsyslog::client':
-    log_remote     => true,
-    remote_type    => 'tcp',
-    log_local      => false,
-    log_auth_local => false,
-    custom_config  => undef,
-    port           => '514',
-    server         => 'logs.web.engineering.osu.edu',
+    log_remote     => false,
+    log_local      => true
   }  
 }
 

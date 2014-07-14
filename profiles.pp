@@ -128,7 +128,6 @@ class rails_app {
   include rvm
   include rubies
   include capistrano
-  include log_client
   include log_client::web
 
   package { 'mysql-devel':

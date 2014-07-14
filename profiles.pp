@@ -36,7 +36,7 @@ class base {
   class { 'rsyslog::client':
     log_remote     => false,
     log_local      => true
-  }  
+  }
 }
 
 # Node role definitions
@@ -128,6 +128,7 @@ class rails_app {
   include rvm
   include rubies
   include capistrano
+  include log_client::web
 
   package { 'mysql-devel':
     ensure => present,
@@ -135,34 +136,6 @@ class rails_app {
 
   class { 'rvm::passenger::apache':
     require => [ Class['rubies'], Class['apache'] ]
-  }
-
-  class { 'logstashforwarder':
-    manage_repo  => true,
-    servers  => [ 'logstash.web.engineering.osu.edu:4545' ],
-    ssl_key  => '/etc/httpd/conf/private.key',
-    ssl_ca   => '/etc/httpd/conf/ca-chain.cert',
-    ssl_cert => '/etc/httpd/conf/public.cert'
-  }
-
-  logstashforwarder::file { 'apache-access':
-    paths  => [ '/var/log/httpd/access_log' ],
-    fields => { 'type' => 'apache-access' }
-  }
-
-  logstashforwarder::file { 'apache-access-ssl':
-    paths  => [ '/var/log/httpd/ssl_access_log' ],
-    fields => { 'type' => 'apache-access-ssl' }
-  }
-
-  logstashforwarder::file { 'apache-error':
-    paths  => [ '/var/log/httpd/error_log', '/var/log/httpd/ssl_error_log'],
-    fields => { 'type' => 'apache-error' }
-  }
-
-  logstashforwarder::file { 'messages':
-    paths  => [ '/var/log/messages', '/var/log/secure' ],
-    fields => { 'type' => 'syslog' }
   }
 
 }

@@ -145,9 +145,14 @@ class rails_app {
     ssl_cert => '/etc/httpd/conf/public.cert'
   }
 
-  logstashforwarder::file { 'apache':
+  logstashforwarder::file { 'apache-access':
     paths  => [ '/var/log/httpd/access_log' ],
-    fields => { 'type' => 'apache' },
+    fields => { 'type' => 'apache-access' }
+  }
+
+  logstashforwarder::file { 'messages':
+    paths  => [ '/var/log/messages' ],
+    fields => { 'type' => 'syslog' }
   }
 
 }

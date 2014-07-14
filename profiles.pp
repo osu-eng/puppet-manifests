@@ -161,7 +161,7 @@ class rails_app {
   }
 
   logstashforwarder::file { 'messages':
-    paths  => [ '/var/log/messages' ],
+    paths  => [ '/var/log/messages', '/var/log/secure' ],
     fields => { 'type' => 'syslog' }
   }
 

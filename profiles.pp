@@ -66,6 +66,7 @@ class database {
   include mysql::server::account_security
   include mysql::server::mysqltuner
   include mysql::server::backup
+  include log_client
 
   # Allow our mysql clients to talk to our  server
   firewall::rule { 'allow-rsyslog-server':
@@ -77,6 +78,7 @@ class database {
 class webserver {
   include apache
   include php::apache
+  include log_client::web
   # include mysql::repos
   # include mysql::client
 }
@@ -128,7 +130,6 @@ class rails_app {
   include rvm
   include rubies
   include capistrano
-  include log_client::web
 
   package { 'mysql-devel':
     ensure => present,

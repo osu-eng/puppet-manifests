@@ -87,6 +87,9 @@ class logserver {
   include elk
 }
 
+class drupal_log {
+  include log_client::drupal
+}
 
 class analyticsserver {
 

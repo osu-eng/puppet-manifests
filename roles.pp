@@ -25,6 +25,7 @@ class web_cluster_node {
   include aegirslave
   include real_server
   include unitrends_client
+  include drupal_log
 }
 
 class web_cluster_platform_manager {

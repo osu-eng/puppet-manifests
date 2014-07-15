@@ -130,7 +130,7 @@ class rails_app {
   include capistrano
   
   class { 'log_client':
-    type => 'web'
+    type => 'base'
   }
 
   package { 'mysql-devel':

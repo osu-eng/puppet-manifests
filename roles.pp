@@ -75,3 +75,7 @@ class security_scanner {
   include base
   include unitrends_client
 }
+
+class openshift_server {
+  include base
+}

@@ -68,6 +68,7 @@ class database_server {
 class application_server {
   include base
   include webserver
+  include shibboleth
   include rails_app
 }
 
